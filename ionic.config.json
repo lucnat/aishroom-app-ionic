@@ -1,0 +1,8 @@
+{
+  "name": "aishroom",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "mode": "ios"
+}
