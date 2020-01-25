@@ -3,6 +3,6 @@
   "appName": "aishroom",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "public",
+  "webDir": "build",
   "cordova": {}
 }

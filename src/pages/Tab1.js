@@ -49,7 +49,7 @@ export default class Tab1 extends React.Component{
   renderImage() {
     return (
       <div style={{textAlign: 'center'}}>
-        {this.state.imageURL ? <img crossOrigin={Ion.isPlatform('desktop') ? 'anonymous' : null} id="image" src={this.state.imageURL} style={{width: 300}}/> : null}
+        {this.state.imageURL ? <img width="160" crossOrigin={Ion.isPlatform('desktop') ? 'anonymous' : null} id="image" src={this.state.imageURL}/> : null}
       </div>
     );
   }
@@ -103,7 +103,7 @@ export default class Tab1 extends React.Component{
           <Classifier ref={this.classifier} onFinished={this.onFinishedClassifying.bind(this)} />
           <div style={{paddingTop: 20, textAlign: 'center'}}>
             <Ion.IonButton mode="ios" size="large" color="light" onClick={() => {this.takePicture()}}>
-              Bild wählen
+              Bild wählennn
             </Ion.IonButton>
           </div>
           <br />
