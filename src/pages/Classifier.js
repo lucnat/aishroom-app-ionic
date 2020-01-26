@@ -69,9 +69,10 @@ class Classifier extends React.Component {
       const values = predictions.dataSync();
       const arr = Array.from(values);
       const huanizedPredictions = arr.map((el, index) => {
-        let prediction = {};
-        const label = labels[index];
-        prediction[label] = Math.round(arr[index]*1000)/10;
+        let prediction = {
+          label: labels[index],
+          probability: Math.round(arr[index]*1000)/10
+        };
         return prediction
       });
       this.props.onFinished(huanizedPredictions);
@@ -84,7 +85,7 @@ class Classifier extends React.Component {
     const { isTfReady, isModelReady } = this.state;
 
     return (
-        <div style={{color: '#ccc'}}>
+        <div style={{color: '#ccc', textAlign: 'center'}}>
           <p>Tensorflow ready:  {isTfReady ? 'yes' : "loading..."}, Model ready: {isModelReady ? 'yes' : 'loading...'}</p>
         </div>
     );

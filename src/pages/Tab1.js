@@ -5,7 +5,7 @@ import React from 'react';
 import { Plugins, CameraResultType } from '@capacitor/core';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import Classifier from './Classifier'
-import GridLoader from "react-spinners/GridLoader";
+import Predictions from './Predictions'
 
 const { Camera } = Plugins;
 
@@ -55,11 +55,13 @@ export default class Tab1 extends React.Component{
   }
 
   renderClassifyButton() {
-    if(this.state.imageURL) return (
+    if(this.state.imageURL && !this.state.imageClassified && !this.state.isClassifying) return (
       <div style={{textAlign: 'center'}}>
         <Ion.IonButton mode="ios" size="large" color="light" onClick={() => {
             this.setState({isClassifying: true});
-            this.classifier.current.classifyImage(this.state.imageURL);
+            setTimeout(() => {
+              this.classifier.current.classifyImage(this.state.imageURL);
+            }, 1000)
           }}>
             Klassifizieren
         </Ion.IonButton>
@@ -70,21 +72,17 @@ export default class Tab1 extends React.Component{
   onFinishedClassifying(e) {
     this.setState({
       predictions: e,
-      isClassifying: false
-    })
+      isClassifying: false,
+      imageClassified: true
+    });
   }
 
   renderPredictions() {
     if(this.state.isClassifying) return (
-      <div>
-        <GridLoader
-          size={50}
-          color={"#ccc"}
-        />
-      </div>
+      <p>Classifying...</p>
     );
     if(this.state.predictions) {
-      return this.state.predictions.map((p,i) => <p key={i}>{JSON.stringify(p)}</p>)
+      return <Predictions predictions={this.state.predictions} />
     }
   }
 
@@ -99,18 +97,20 @@ export default class Tab1 extends React.Component{
             <Ion.IonTitle>Classify</Ion.IonTitle>
           </Ion.IonToolbar>
         </Ion.IonHeader>
-        <Ion.IonContent padding={true}>
-          <Classifier ref={this.classifier} onFinished={this.onFinishedClassifying.bind(this)} />
-          <div style={{paddingTop: 20, textAlign: 'center'}}>
-            <Ion.IonButton mode="ios" size="large" color="light" onClick={() => {this.takePicture()}}>
-              Bild wählennn
-            </Ion.IonButton>
+        <Ion.IonContent> 
+          <div style={{padding: 15}}>
+            <Classifier ref={this.classifier} onFinished={this.onFinishedClassifying.bind(this)} />
+            <div style={{paddingTop: 10, textAlign: 'center'}}>
+              <Ion.IonButton mode="ios" size="large" color="light" onClick={() => {this.takePicture()}}>
+                🍄 Bild wählen
+              </Ion.IonButton>
+            </div>
+            <br />
+            {this.renderImage()}
+            <br />
+            {this.renderClassifyButton()}
+            {this.renderPredictions()}
           </div>
-          <br />
-          {this.renderImage()}
-          <br />
-          {this.renderClassifyButton()}
-          {this.renderPredictions()}
         </Ion.IonContent>
       </Ion.IonPage>
     );
