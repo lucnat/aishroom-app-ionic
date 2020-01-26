@@ -12,14 +12,9 @@ class Tab2 extends React.Component {
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <IonList>
-          
-            <IonItem routerLink="/tab2/details">
-              <IonLabel>
-                <h2>Go to detail</h2>
-              </IonLabel>
-            </IonItem>
-          </IonList>
+          <div style={{padding: 15}}>
+            <h1>Tab 2</h1>
+          </div>
         </IonContent>
       </IonPage>
 

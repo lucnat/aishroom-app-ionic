@@ -25,6 +25,7 @@ export default class Predictions extends React.Component {
 	}
 
 	getMaxClasses() {
+		console.log(this.props);
 		const sorted = this.props.predictions.sort((a,b) => {
 			return b.probability - a.probability
 		});
@@ -71,9 +72,9 @@ export default class Predictions extends React.Component {
 			        xAxes: [{
 			        	display: false
 			        }],
-            yAxes: [{
-                display: false
-            }]
+		            yAxes: [{
+		                display: false
+		            }]
 			    }
 		    }
 		});
@@ -83,7 +84,7 @@ export default class Predictions extends React.Component {
 	renderList() {
 
 		return this.state.maxClasses && this.state.maxClasses.map(el => (
-			<Ion.IonItem>
+			<Ion.IonItem key={el.label}>
 				<span style={{color: el.color, width: 70}}><b>{el.probability } %</b></span>
 				<Ion.IonLabel>{el.label}</Ion.IonLabel>
 			</Ion.IonItem>

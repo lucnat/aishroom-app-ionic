@@ -55,7 +55,7 @@ export default class Tab1 extends React.Component{
   renderImage() {
     return (
       <div style={{textAlign: 'center'}}>
-        {this.state.imageURL ? <img width="160" crossOrigin={Ion.isPlatform('desktop') ? 'anonymous' : null} id="image" src={this.state.imageURL}/> : null}
+        {this.state.imageURL ? <img width="250" crossOrigin={Ion.isPlatform('desktop') ? 'anonymous' : null} id="image" src={this.state.imageURL}/> : null}
       </div>
     );
   }
@@ -75,24 +75,20 @@ export default class Tab1 extends React.Component{
     );
   }
 
-  onFinishedClassifying(e) {
+  onFinishedClassifying(predictions) {
     this.setState({
-      predictions: e,
       isClassifying: false,
       imageClassified: true
     });
-  }
 
-  renderPredictions() {
-    if(this.state.isClassifying) return (
-      <p>Classifying...</p>
-    );
-    if(this.state.predictions) {
-      return <Predictions predictions={this.state.predictions} />
-    }
-  }
+    this.props.history.push({
+      pathname: '/tab1/result',
+      state: {
+        predictions: predictions,
+        imageURL: this.state.imageURL
+      }
+    })
 
-  renderLoading() {
   }
 
   render() {
@@ -115,7 +111,7 @@ export default class Tab1 extends React.Component{
             {this.renderImage()}
             <br />
             {this.renderClassifyButton()}
-            {this.renderPredictions()}
+            <Ion.IonLoading isOpen={this.state.isClassifying} />
           </div>
         </Ion.IonContent>
       </Ion.IonPage>
