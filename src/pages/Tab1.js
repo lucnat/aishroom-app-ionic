@@ -30,7 +30,11 @@ export default class Tab1 extends React.Component{
   async takePicture() {
 
     if(Ion.isPlatform('desktop')) {
-      this.setState({imageURL: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Amanita_muscaria_%28fly_agaric%29.JPG'});
+      this.setState({
+        imageURL: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Boletus_edulis_EtgHollande_041031_091.jpg',
+        isClassifying: false,
+        imageClassified: false
+      });
       return;
     }
 
@@ -42,8 +46,10 @@ export default class Tab1 extends React.Component{
     var imageUrl = image.webPath;
     console.log(image);
     this.setState({
-      imageURL: imageUrl
-    })
+      imageURL: imageUrl,
+      isClassifying: false,
+      imageClassified: false
+    });
   }
 
   renderImage() {
@@ -98,7 +104,7 @@ export default class Tab1 extends React.Component{
           </Ion.IonToolbar>
         </Ion.IonHeader>
         <Ion.IonContent> 
-          <div style={{padding: 15}}>
+          <div>
             <Classifier ref={this.classifier} onFinished={this.onFinishedClassifying.bind(this)} />
             <div style={{paddingTop: 10, textAlign: 'center'}}>
               <Ion.IonButton mode="ios" size="large" color="light" onClick={() => {this.takePicture()}}>

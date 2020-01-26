@@ -8,7 +8,7 @@ class Tab2 extends React.Component {
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>Tab Two</IonTitle>
+            <IonTitle>Gespeichert</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
