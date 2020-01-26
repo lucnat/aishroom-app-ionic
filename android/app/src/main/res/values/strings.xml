@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">aishroom</string>
+    <string name="title_activity_main">aishroom</string>
+    <string name="package_name">com.naterop.aishroom</string>
+    <string name="custom_url_scheme">com.naterop.aishroom</string>
+</resources>
