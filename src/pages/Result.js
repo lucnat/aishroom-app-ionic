@@ -9,7 +9,8 @@ class Result extends React.Component {
   // props: predictions, imageURL
 
 	render() {
-    const predictions = this.props.location.state.predictions;
+    const routerState = this.props.location && this.props.location.state;
+    const predictions = routerState && routerState.predictions;
 		return (
       <Ion.IonPage>
         <Ion.IonHeader>
@@ -21,7 +22,7 @@ class Result extends React.Component {
           </Ion.IonToolbar>
         </Ion.IonHeader>
         <Ion.IonContent>
-          <img src={this.props.location.state.imageURL} />
+          <img src={routerState && routerState.imageURL} />
           <Predictions predictions={predictions} />
           <br />
           <Ion.IonButton color="light" mode="ios" expand="block" onClick={() => {alert('Todo')}}>

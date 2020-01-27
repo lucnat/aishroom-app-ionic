@@ -7,6 +7,23 @@ import * as jpeg from "jpeg-js";
 
 const labels = ["Boletus Badius","Lentinula Edodes","Macrolepiota Procera","Pleurotus Ostreatus","Cantharellus Cibariusa","Coprinus Comatus","Imleria Badia","Amanita Muscaria"]
 
+function getDummyPrediction() {
+  return [
+    {
+      label: 'Boletus Badius',
+      probability: 84.6
+    },
+    {
+      label: 'Pleurotus Ostreatus',
+      probability: 10.2
+    },
+    {
+      label: 'Other',
+      probability: 5.2
+    }
+  ];
+}
+
 class Classifier extends React.Component {
 
   state = {
@@ -47,7 +64,11 @@ class Classifier extends React.Component {
     return tf.tensor3d(buffer, [height, width, 3]);
   }
 
-  classifyImage = async (imageURL) => {
+  classifyImage = async (imageURL, dummy) => {
+    if(dummy) {
+      this.props.onFinished(getDummyPrediction());
+      return;
+    }
     try {
       console.log('classify begin');
       const imageElement = document.getElementById('image');

@@ -9,6 +9,9 @@ import Predictions from './Predictions'
 
 const { Camera } = Plugins;
 
+const dummy = true;   // we are testing
+
+
 export default class Tab1 extends React.Component{
 
   constructor(props) {
@@ -27,16 +30,15 @@ export default class Tab1 extends React.Component{
     photo: null
   }
 
-  async takePicture() {
-
-    if(Ion.isPlatform('desktop')) {
+  dummyLoadPicture() {
       this.setState({
         imageURL: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Boletus_edulis_EtgHollande_041031_091.jpg',
         isClassifying: false,
         imageClassified: false
       });
-      return;
-    }
+  }
+
+  async takePicture() {
 
     const image = await Camera.getPhoto({
       quality: 90,
@@ -66,7 +68,7 @@ export default class Tab1 extends React.Component{
         <Ion.IonButton mode="ios" size="large" color="light" onClick={() => {
             this.setState({isClassifying: true});
             setTimeout(() => {
-              this.classifier.current.classifyImage(this.state.imageURL);
+              this.classifier.current.classifyImage(this.state.imageURL, dummy);
             }, 1000)
           }}>
             Klassifizieren
@@ -102,10 +104,16 @@ export default class Tab1 extends React.Component{
         <Ion.IonContent> 
           <div>
             <Classifier ref={this.classifier} onFinished={this.onFinishedClassifying.bind(this)} />
-            <div style={{paddingTop: 10, textAlign: 'center'}}>
+            <div style={{textAlign: 'center'}}>
               <Ion.IonButton mode="ios" size="large" color="light" onClick={() => {this.takePicture()}}>
-                🍄 Bild wählen
-              </Ion.IonButton>
+                🍄 Bild wählenn
+              </Ion.IonButton> <br /><br />
+              <a href="#" onClick={(e) => {
+                e.preventDefault();
+                this.dummyLoadPicture();
+              }}>
+                ..oder laden
+              </a>
             </div>
             <br />
             {this.renderImage()}
