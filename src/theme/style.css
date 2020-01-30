@@ -1,0 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css?family=Suez+One&display=swap');
+
+* {
+	font-family: 'Suez One', serif;
+}
+
+ion-toolbar {
+	height: 70px;
+}
+
+ion-title {
+	font-size: 25px;
+	margin-top: 10px;
+}

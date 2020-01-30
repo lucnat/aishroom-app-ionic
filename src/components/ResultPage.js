@@ -16,7 +16,7 @@ class ResultPage extends React.Component {
       <Ion.IonPage>
         <Ion.IonHeader>
           <Ion.IonToolbar>
-            <Ion.IonButtons slot="start">
+            <Ion.IonButtons slot="start" color="primary">
               <Ion.IonBackButton text="zurück" defaultHref="/classify" />
             </Ion.IonButtons>
             <Ion.IonTitle>Resultat</Ion.IonTitle>
@@ -26,7 +26,7 @@ class ResultPage extends React.Component {
           <img src={routerState && routerState.imageURL} />
           <Predictions predictions={predictions} />
           <br />
-          <Ion.IonButton color="light" mode="ios" expand="block" onClick={() => {alert('Todo')}}>
+          <Ion.IonButton color="light" expand="block" onClick={() => {alert('Todo')}}>
             Zu meinem Feldbuch hinzufügen
           </Ion.IonButton>
           <br />

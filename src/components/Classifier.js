@@ -1,8 +1,6 @@
 
 import React from "react";
-import * as Ion from '@ionic/react';
 import * as tf from "@tensorflow/tfjs";
-// import { fetch } from "@tensorflow/tfjs-react-native";
 import * as jpeg from "jpeg-js";
 
 const labels = ["Boletus Badius","Lentinula Edodes","Macrolepiota Procera","Pleurotus Ostreatus","Cantharellus Cibariusa","Coprinus Comatus","Imleria Badia","Amanita Muscaria"]
@@ -107,7 +105,7 @@ class Classifier extends React.Component {
 
     return (
         <div style={{color: '#ccc', textAlign: 'center'}}>
-          <p>Tensorflow ready:  {isTfReady ? 'yes' : "loading..."}, Model ready: {isModelReady ? 'yes' : 'loading...'}</p>
+          <p> {isTfReady ? 'Tensorflow ready' : "loading..."}, {isModelReady ? 'Model ready' : 'loading...'}</p>
         </div>
     );
   }

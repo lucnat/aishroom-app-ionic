@@ -10,5 +10,5 @@
 
 or with live reload:
 
-`ionic capa run ios --livereload-url=http://192.168.1.6:8100`
+`ionic cap run ios --livereload-url=http://192.168.1.6:8100`
 

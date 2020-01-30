@@ -63,9 +63,9 @@ export default class ClassifyPage extends React.Component{
   }
 
   renderClassifyButton() {
-    if(this.state.imageURL && !this.state.imageClassified && !this.state.isClassifying) return (
+    if(this.state.imageURL && !this.state.imageClassified) return (
       <div style={{textAlign: 'center'}}>
-        <Ion.IonButton mode="ios" size="large" color="light" onClick={() => {
+        <Ion.IonButton fill="solid" expand="block" color="primary" onClick={() => {
             this.setState({isClassifying: true});
             setTimeout(() => {
               this.classifier.current.classifyImage(this.state.imageURL, dummy);
@@ -93,38 +93,42 @@ export default class ClassifyPage extends React.Component{
 
   }
 
-  renderHeader() {
+  renderDummyLoad() {
+    if(dummy) return (
+      <div>
+        <br />
+        <a href="#" onClick={(e) => {
+          e.preventDefault();
+          this.dummyLoadPicture();
+        }}>
+          ..oder laden
+        </a>
+      </div>
+    );
+  }
+
+  renderToolbar() {
     return (
-      <Ion.IonHeader>
-        <Ion.IonToolbar>
+        <Ion.IonToolbar color="secondary">
           <Ion.IonTitle>Classify</Ion.IonTitle>
-          <Ion.IonButtons slot="start">
-            <Ion.IonButton onClick={() => {}}>
-              <Ion.IonIcon icon={Icons.book} />
-            </Ion.IonButton>
-          </Ion.IonButtons>
         </Ion.IonToolbar>
-      </Ion.IonHeader>
+      
     );
   }
 
   render() {
+
     return (
       <Ion.IonPage>
-        {this.renderHeader()}
+        <Ion.IonHeader>{this.renderToolbar()}</Ion.IonHeader>
         <Ion.IonContent> 
-          <div>
+          <div style={{padding: 15}}>
             <Classifier ref={this.classifier} onFinished={this.onFinishedClassifying.bind(this)} />
             <div style={{textAlign: 'center'}}>
-              <Ion.IonButton mode="ios" size="large" color="light" onClick={() => {this.takePicture()}}>
-                🍄 Bild wählenn
-              </Ion.IonButton> <br /><br />
-              <a href="#" onClick={(e) => {
-                e.preventDefault();
-                this.dummyLoadPicture();
-              }}>
-                ..oder laden
-              </a>
+              <Ion.IonButton fill="solid" expand="block" color="primary" onClick={() => {this.takePicture()}}>
+                Bild wählen
+              </Ion.IonButton>
+              {this.renderDummyLoad()}
             </div>
             <br />
             {this.renderImage()}

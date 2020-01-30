@@ -13,9 +13,9 @@ function transpose(array) {
 }
 
 const colors = [
-	'rgba(255, 99, 132, 1)',
-	'rgba(54, 162, 235, 1)',
-	'rgba(255, 206, 86, 1)'
+	'#FA5B31',
+	'rgba(255, 206, 86, 1)',
+	'#555E67'
 ];
 
 export default class Predictions extends React.Component {
