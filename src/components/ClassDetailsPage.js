@@ -11,12 +11,13 @@ export default class ClassDetailsPage extends React.Component {
   }
 
   renderToolbar() {
+    const label = this.state.location && this.state.location.state && this.state.location.state.label;
     return (
       <Ion.IonToolbar>
         <Ion.IonButtons slot="start">
           <Ion.IonBackButton text="zurück" defaultHref="/classify/result" />
         </Ion.IonButtons>
-        <Ion.IonTitle>Classify</Ion.IonTitle>
+        <Ion.IonTitle>{label}</Ion.IonTitle>
       </Ion.IonToolbar>
     );
   }

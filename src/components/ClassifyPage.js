@@ -108,10 +108,12 @@ export default class ClassifyPage extends React.Component{
 
   renderToolbar() {
     return (
-        <Ion.IonToolbar color="secondary">
-          <Ion.IonTitle>Classify</Ion.IonTitle>
-        </Ion.IonToolbar>
-      
+      <Ion.IonToolbar>
+        <Ion.IonButtons slot="start">
+          <Ion.IonMenuButton />
+        </Ion.IonButtons>
+        <Ion.IonTitle>Classify</Ion.IonTitle>
+      </Ion.IonToolbar>
     );
   }
 

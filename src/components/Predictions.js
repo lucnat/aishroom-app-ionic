@@ -13,7 +13,7 @@ function transpose(array) {
 }
 
 const colors = [
-	'#FA5B31',
+	'#36A2EB',
 	'rgba(255, 206, 86, 1)',
 	'#555E67'
 ];
