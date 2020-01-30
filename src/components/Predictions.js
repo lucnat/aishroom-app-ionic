@@ -25,11 +25,9 @@ export default class Predictions extends React.Component {
 	}
 
 	getMaxClasses() {
-		console.log(this.props);
 		const sorted = this.props.predictions.sort((a,b) => {
 			return b.probability - a.probability
 		});
-		console.log(sorted)
 		const bestCandidates = [];
 		const first = sorted[0];
 		first.color = colors[0]
@@ -53,7 +51,6 @@ export default class Predictions extends React.Component {
 		const maxClasses = this.getMaxClasses();
 		this.setState({maxClasses});
 		const data = transpose(this.getMaxClasses());
-		console.log(data)
 		const ctx = document.getElementById('chart').getContext('2d');
 		var myChart = new Chart(ctx, {
 		    type: 'doughnut',
@@ -82,9 +79,12 @@ export default class Predictions extends React.Component {
 	}
 
 	renderList() {
-
 		return this.state.maxClasses && this.state.maxClasses.map(el => (
-			<Ion.IonItem key={el.label}>
+			<Ion.IonItem key={el.label} onClick={(e) => {
+				e.preventDefault();
+				if(el.label == 'Other') return;
+				this.props.history.push({ pathname: '/classify/classdetails',state: { label: el.label}})
+			}} href={el.label == 'Other' ? undefined : '#'}>
 				<span style={{color: el.color, width: 70}}><b>{el.probability } %</b></span>
 				<Ion.IonLabel>{el.label}</Ion.IonLabel>
 			</Ion.IonItem>

@@ -3,15 +3,20 @@ import React from 'react';
 import * as Ion from '@ionic/react';
 
 import Predictions from './Predictions';
-
+import classes from '../data/classes';
 
 class ResultPage extends React.Component {
 
   // props: predictions, imageURL
 
+  state = {
+    ...this.props
+  }
+
 	render() {
-    const routerState = this.props.location && this.props.location.state;
+    const routerState = this.state.location && this.state.location.state;
     const predictions = routerState && routerState.predictions;
+
 		return (
       <Ion.IonPage>
         <Ion.IonHeader>
@@ -24,7 +29,7 @@ class ResultPage extends React.Component {
         </Ion.IonHeader>
         <Ion.IonContent>
           <img src={routerState && routerState.imageURL} />
-          <Predictions predictions={predictions} />
+          <Predictions predictions={predictions} history={this.props.history} />
           <br />
           <Ion.IonButton color="light" expand="block" onClick={() => {alert('Todo')}}>
             Zu meinem Feldbuch hinzufügen

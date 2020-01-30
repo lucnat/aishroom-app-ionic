@@ -2,8 +2,7 @@
 import React from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as jpeg from "jpeg-js";
-
-const labels = ["Boletus Badius","Lentinula Edodes","Macrolepiota Procera","Pleurotus Ostreatus","Cantharellus Cibariusa","Coprinus Comatus","Imleria Badia","Amanita Muscaria"]
+import classes from '../data/classes';
 
 function getDummyPrediction() {
   return [
@@ -89,7 +88,7 @@ class Classifier extends React.Component {
       const arr = Array.from(values);
       const huanizedPredictions = arr.map((el, index) => {
         let prediction = {
-          label: labels[index],
+          label: classes[index].label,
           probability: Math.round(arr[index]*1000)/10
         };
         return prediction

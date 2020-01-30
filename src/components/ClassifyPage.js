@@ -5,7 +5,6 @@ import React from 'react';
 import { Plugins, CameraResultType } from '@capacitor/core';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import Classifier from './Classifier'
-import Predictions from './Predictions'
 
 const { Camera } = Plugins;
 
@@ -117,7 +116,6 @@ export default class ClassifyPage extends React.Component{
   }
 
   render() {
-
     return (
       <Ion.IonPage>
         <Ion.IonHeader>{this.renderToolbar()}</Ion.IonHeader>

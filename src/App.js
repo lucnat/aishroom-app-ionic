@@ -1,16 +1,13 @@
 
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import {
-  IonApp,
-  IonRouterOutlet,
-} from '@ionic/react';
+import { IonApp, IonRouterOutlet } from '@ionic/react';
 
 import { IonReactRouter } from '@ionic/react-router';
 import * as Icons from 'ionicons/icons';
 import ClassifyPage from './components/ClassifyPage';
 import ResultPage from './components/ResultPage';
-import Tab2 from './components/Tab2';
+import ClassDetailsPage from './components/ClassDetailsPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,13 +29,14 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import './theme/style.css';
 
-const App: React.FC = () => (
+const App = () => (
   <IonApp>
     <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/classify" component={ClassifyPage} exact={true} />
-          <Route path="/classify/result" component={ResultPage} />
           <Route path="/" render={() => <Redirect to="/classify" />} exact={true} />
+          <Route path="/classify/result" component={ResultPage} />
+          <Route path="/classify/classdetails" component={ClassDetailsPage} />
         </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
