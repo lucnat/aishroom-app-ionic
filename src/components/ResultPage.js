@@ -4,7 +4,8 @@ import * as Ion from '@ionic/react';
 
 import Predictions from './Predictions';
 
-class Result extends React.Component {
+
+class ResultPage extends React.Component {
 
   // props: predictions, imageURL
 
@@ -16,7 +17,7 @@ class Result extends React.Component {
         <Ion.IonHeader>
           <Ion.IonToolbar>
             <Ion.IonButtons slot="start">
-              <Ion.IonBackButton defaultHref="/tab1" />
+              <Ion.IonBackButton text="zurück" defaultHref="/classify" />
             </Ion.IonButtons>
             <Ion.IonTitle>Resultat</Ion.IonTitle>
           </Ion.IonToolbar>
@@ -36,4 +37,4 @@ class Result extends React.Component {
 
 }
 
-export default Result
+export default ResultPage

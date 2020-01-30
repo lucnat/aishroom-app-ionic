@@ -1,6 +1,6 @@
 
 import * as Ion from '@ionic/react';
-import { book, build, colorFill, grid } from 'ionicons/icons';
+import * as Icons from 'ionicons/icons';
 import React from 'react';
 import { Plugins, CameraResultType } from '@capacitor/core';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
@@ -12,7 +12,7 @@ const { Camera } = Plugins;
 const dummy = true;   // we are testing
 
 
-export default class Tab1 extends React.Component{
+export default class ClassifyPage extends React.Component{
 
   constructor(props) {
     super(props);
@@ -84,7 +84,7 @@ export default class Tab1 extends React.Component{
     });
 
     this.props.history.push({
-      pathname: '/tab1/result',
+      pathname: '/classify/result',
       state: {
         predictions: predictions,
         imageURL: this.state.imageURL
@@ -93,14 +93,25 @@ export default class Tab1 extends React.Component{
 
   }
 
+  renderHeader() {
+    return (
+      <Ion.IonHeader>
+        <Ion.IonToolbar>
+          <Ion.IonTitle>Classify</Ion.IonTitle>
+          <Ion.IonButtons slot="start">
+            <Ion.IonButton onClick={() => {}}>
+              <Ion.IonIcon icon={Icons.book} />
+            </Ion.IonButton>
+          </Ion.IonButtons>
+        </Ion.IonToolbar>
+      </Ion.IonHeader>
+    );
+  }
+
   render() {
     return (
       <Ion.IonPage>
-        <Ion.IonHeader>
-          <Ion.IonToolbar>
-            <Ion.IonTitle>Classify</Ion.IonTitle>
-          </Ion.IonToolbar>
-        </Ion.IonHeader>
+        {this.renderHeader()}
         <Ion.IonContent> 
           <div>
             <Classifier ref={this.classifier} onFinished={this.onFinishedClassifying.bind(this)} />

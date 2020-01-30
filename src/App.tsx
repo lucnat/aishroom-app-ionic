@@ -13,9 +13,9 @@ import {
 
 import { IonReactRouter } from '@ionic/react-router';
 import * as Icons from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Result from './pages/Result';
-import Tab2 from './pages/Tab2';
+import ClassifyPage from './components/ClassifyPage';
+import ResultPage from './components/ResultPage';
+import Tab2 from './components/Tab2';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -39,22 +39,11 @@ import './theme/variables.css';
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonTabs>
         <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/tab1/result" component={Result} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+          <Route path="/classify" component={ClassifyPage} exact={true} />
+          <Route path="/classify/result" component={ResultPage} />
+          <Route path="/" render={() => <Redirect to="/classify" />} exact={true} />
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={Icons.camera} />
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={Icons.book} />
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
     </IonReactRouter>
   </IonApp>
 );
