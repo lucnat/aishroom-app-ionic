@@ -3,7 +3,7 @@ import React from 'react';
 import * as Ion from '@ionic/react';
 import * as Icons from 'ionicons/icons';
 
-export default class FieldBook extends React.Component {
+export default class Settings extends React.Component {
 
   renderToolbar() {
     return (
@@ -11,7 +11,7 @@ export default class FieldBook extends React.Component {
         <Ion.IonButtons slot="start">
           <Ion.IonMenuButton />
         </Ion.IonButtons>
-        <Ion.IonTitle>Feldbuech</Ion.IonTitle>
+        <Ion.IonTitle>iistellige</Ion.IonTitle>
       </Ion.IonToolbar>
     );
   }

@@ -39,7 +39,7 @@ class Classifier extends React.Component {
     // load converted keras model
     // otherwise one would need something like file://
     // see https://www.tensorflow.org/js/guide/save_load
-    this.model = await tf.loadLayersModel("https://aishroom-web.lucnat.now.sh/model_8_classes/model.json",false);
+    this.model = await tf.loadGraphModel("https://aishroom-web.lucnat.now.sh/models/1000_classes/model.json",false);
     
     this.setState({ isModelReady: true });
   }
@@ -84,11 +84,17 @@ class Classifier extends React.Component {
       console.log('classify image middle')
 
       const predictions = await this.model.predict(fromZeroToOne);
-      const values = predictions.dataSync();
+      let values
+      if(Array.isArray(predictions)){
+        values = predictions[predictions.length-1].dataSync();
+      } else {
+        values = predictions.dataSync();
+      }
       const arr = Array.from(values);
+      console.log(arr);
       const huanizedPredictions = arr.map((el, index) => {
         let prediction = {
-          label: classes[index].label,
+          label: classes[index],
           probability: Math.round(arr[index]*1000)/10
         };
         return prediction

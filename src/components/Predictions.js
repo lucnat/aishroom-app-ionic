@@ -3,7 +3,6 @@ import React from 'react';
 import * as Ion from '@ionic/react';
 import { Chart } from 'chart.js';
 
-
 function transpose(array) {
   // transpose
   let transposed = Object.assign(...Object.keys(array[0]).map( key =>

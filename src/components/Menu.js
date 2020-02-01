@@ -11,8 +11,28 @@ import {
   IonTitle,
   IonToolbar
 } from '@ionic/react';
+import * as Icons from 'ionicons/icons';
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+
+const appPages = [
+  {
+    title: 'Greteli fröge',
+    url: '/classify',
+    icon: Icons.home
+  },
+  {
+    title: 'feldbuech',
+    url: '/fieldbook',
+    icon: Icons.book
+  },
+  {
+    title: 'iistellige',
+    url: '/settings',
+    icon: Icons.settings
+  }
+]
+
 
 class Menu extends React.Component {
   render() {
@@ -25,11 +45,10 @@ class Menu extends React.Component {
         </IonHeader>
         <IonContent>
           <IonList>
-            {this.props.appPages.map((appPage, index) => {
+            {appPages.map((appPage, index) => {
               return (
                 <IonMenuToggle key={index} autoHide={false}>
                   <IonItem routerLink={appPage.url} routerDirection="none" >
-                    <IonIcon slot="start" icon={appPage.icon} color="secondary" />
                     <IonLabel>{appPage.title}</IonLabel>
                   </IonItem>
                 </IonMenuToggle>
