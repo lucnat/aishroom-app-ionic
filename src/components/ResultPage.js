@@ -3,7 +3,6 @@ import React from 'react';
 import * as Ion from '@ionic/react';
 
 import Predictions from './Predictions';
-import classes from '../data/classes';
 
 class ResultPage extends React.Component {
 

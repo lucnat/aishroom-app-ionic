@@ -11,6 +11,7 @@ import ResultPage from './components/ResultPage';
 import ClassDetailsPage from './components/ClassDetailsPage';
 import FieldBook from './components/FieldBook';
 import Settings from './components/Settings';
+import './startup';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

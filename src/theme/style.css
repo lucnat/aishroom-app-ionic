@@ -13,3 +13,7 @@ ion-title {
 	font-size: 25px;
 	margin-top: 10px;
 }
+
+p {
+	font-family: 'Helvetica', sans-serif;
+}

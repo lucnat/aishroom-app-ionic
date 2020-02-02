@@ -79,11 +79,7 @@ export default class Predictions extends React.Component {
 
 	renderList() {
 		return this.state.maxClasses && this.state.maxClasses.map(el => (
-			<Ion.IonItem key={el.label} onClick={(e) => {
-				e.preventDefault();
-				if(el.label == 'Other') return;
-				this.props.history.push({ pathname: '/classify/classdetails',state: { label: el.label}})
-			}} href={el.label == 'Other' ? undefined : '#'}>
+			<Ion.IonItem key={el.label}>
 				<span style={{color: el.color, width: 70}}><b>{el.probability } %</b></span>
 				<Ion.IonLabel>{el.label}</Ion.IonLabel>
 			</Ion.IonItem>

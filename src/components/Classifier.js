@@ -2,7 +2,6 @@
 import React from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as jpeg from "jpeg-js";
-import classes from '../data/classes';
 
 function getDummyPrediction() {
   return [
@@ -39,7 +38,7 @@ class Classifier extends React.Component {
     // load converted keras model
     // otherwise one would need something like file://
     // see https://www.tensorflow.org/js/guide/save_load
-    this.model = await tf.loadGraphModel("https://aishroom-web.lucnat.now.sh/models/1000_classes/model.json",false);
+    this.model = await tf.loadGraphModel(Storage.get('currentModel').url,false);
     
     this.setState({ isModelReady: true });
   }
@@ -72,8 +71,9 @@ class Classifier extends React.Component {
       console.log(imageElement);
       const imageTensor = tf.browser.fromPixels(imageElement);
       console.log(imageTensor);
+      const inputSize = Storage.get('currentModel').inputSize;
       const image = tf.image
-        .resizeNearestNeighbor(imageTensor, [160, 160])
+        .resizeNearestNeighbor(imageTensor, [inputSize, inputSize])
         .toInt()
         .toFloat() //toFloat takes very long
         .expandDims();
@@ -94,7 +94,7 @@ class Classifier extends React.Component {
       console.log(arr);
       const huanizedPredictions = arr.map((el, index) => {
         let prediction = {
-          label: classes[index],
+          label: Storage.get('currentModel').labels[index],
           probability: Math.round(arr[index]*1000)/10
         };
         return prediction
@@ -110,7 +110,7 @@ class Classifier extends React.Component {
 
     return (
         <div style={{color: '#ccc', textAlign: 'center'}}>
-          <p> {isTfReady ? 'Tensorflow ready' : "loading..."}, {isModelReady ? 'Model ready' : 'loading...'}</p>
+          <p> {isModelReady ? 'Model '+ Storage.get('currentModel').name +' ready' : 'loading...'}</p>
         </div>
     );
   }
