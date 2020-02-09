@@ -10,14 +10,13 @@ Storage = {
 	}
 };
 
-
 if(!localStorage.getItem('currentModel')) {
-	const committee = {
+	const model = {
 		"name": "committee",
-		"url": "https://aishroom-web.lucnat.now.sh/models/committee/model.json",
+		"url": "assets/models/committee/model.json",
 		"description": "9 Klassen, mit einem Committee. Momentan unser bestes Modell.",
 		"inputSize": 224,
 		"labels": [ "Amanita Muscaria","Cantharellus Cibariusa,Infundibuliformis","Coprinus Comatus","Craterellus Cornucopioides","Good_Boletes","Macrolepiota Procera","Morchella Esculenta","Pleurotus Eryngii","Red_Boletes"]
 	}
-	Storage.set('currentModel',committee);
+	Storage.set('currentModel',model);
 }
