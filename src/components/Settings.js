@@ -10,7 +10,7 @@ export default class Settings extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://aishroom-web.lucnat.now.sh/models/models.json')
+    fetch('/assets/models/models.json')
       .then(response => {
         return response.json()
       })
