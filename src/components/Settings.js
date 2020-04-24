@@ -55,7 +55,7 @@ export default class Settings extends React.Component {
         <Ion.IonHeader> {this.renderToolbar()} </Ion.IonHeader>
         <Ion.IonContent>
           <div style={{padding: 15}}>
-            <h1> Modell auswählen </h1>
+            <h1> ML Modell auswählen </h1>
             <p> Momentan ausgeählt: <b>{Storage.get('currentModel').name} </b> </p>
             {this.renderModels()}
           </div>
