@@ -17,17 +17,17 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 const appPages = [
   {
-    title: 'Greteli fröge',
+    title: 'Klassifizieren',
     url: '/classify',
     icon: Icons.home
   },
   {
-    title: 'feldbuech',
+    title: 'Feldbuch',
     url: '/fieldbook',
     icon: Icons.book
   },
   {
-    title: 'iistellige',
+    title: 'Einstellugnen',
     url: '/settings',
     icon: Icons.settings
   }

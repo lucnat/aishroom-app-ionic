@@ -112,7 +112,7 @@ export default class ClassifyPage extends React.Component{
         <Ion.IonButtons slot="start">
           <Ion.IonMenuButton />
         </Ion.IonButtons>
-        <Ion.IonTitle>Classify</Ion.IonTitle>
+        <Ion.IonTitle>Klassifizieren</Ion.IonTitle>
       </Ion.IonToolbar>
     );
   }

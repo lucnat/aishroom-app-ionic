@@ -11,7 +11,7 @@ export default class FieldBook extends React.Component {
         <Ion.IonButtons slot="start">
           <Ion.IonMenuButton />
         </Ion.IonButtons>
-        <Ion.IonTitle>Feldbuech</Ion.IonTitle>
+        <Ion.IonTitle>Feldbuch</Ion.IonTitle>
       </Ion.IonToolbar>
     );
   }

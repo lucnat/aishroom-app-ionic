@@ -25,7 +25,7 @@ export default class Settings extends React.Component {
         <Ion.IonButtons slot="start">
           <Ion.IonMenuButton />
         </Ion.IonButtons>
-        <Ion.IonTitle>iistellige</Ion.IonTitle>
+        <Ion.IonTitle>Einstellungen</Ion.IonTitle>
       </Ion.IonToolbar>
     );
   }
@@ -55,8 +55,7 @@ export default class Settings extends React.Component {
         <Ion.IonHeader> {this.renderToolbar()} </Ion.IonHeader>
         <Ion.IonContent>
           <div style={{padding: 15}}>
-            <h1> Remote Models </h1>
-            <p> Hier kann das Modell zur Klassifikation ausgewählt werden. </p>
+            <h1> Modell auswählen </h1>
             <p> Momentan ausgeählt: <b>{Storage.get('currentModel').name} </b> </p>
             {this.renderModels()}
           </div>
