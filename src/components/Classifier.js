@@ -78,12 +78,20 @@ class Classifier extends React.Component {
         .toFloat() //toFloat takes very long
         .expandDims();
 
-      const correctedImage = tf.mul(image,tf.scalar(1/127.5));
-      const fromZeroToOne = tf.add(correctedImage,tf.scalar(-1));
 
+      const correctedImage = tf.mul(image,tf.scalar(1/127.5));
+      const fromMinusOneToOne = tf.add(correctedImage,tf.scalar(-1));
+      console.log('image: DUZMDUMDUDMD')
+      let mapped = fromMinusOneToOne;
+      if(Storage.get('currentModel').from0To1) {
+        mapped = tf.add(mapped,tf.scalar(1.0));
+        mapped = tf.mul(mapped, tf.scalar(1/2.0));
+        console.log('from zero to one');
+      }
+      mapped.print();
       console.log('classify image middle')
 
-      const predictions = await this.model.predict(fromZeroToOne);
+      const predictions = await this.model.predict(fromMinusOneToOne);
       let values
       if(Array.isArray(predictions)){
         values = predictions[predictions.length-1].dataSync();
@@ -91,7 +99,7 @@ class Classifier extends React.Component {
         values = predictions.dataSync();
       }
       const arr = Array.from(values);
-      console.log(arr);
+      // console.log(arr);
       const huanizedPredictions = arr.map((el, index) => {
         let prediction = {
           label: Storage.get('currentModel').labels[index],

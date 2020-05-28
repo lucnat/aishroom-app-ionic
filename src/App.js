@@ -41,11 +41,11 @@ const App = () => (
         <Menu />
         <IonRouterOutlet id="main">
           <Route path="/classify" component={ClassifyPage} exact={true} />
-          <Route path="/" render={() => <Redirect to="/classify" />} exact={true} />
           <Route path="/classify/result" component={ResultPage} />
           <Route path="/classify/classdetails" component={ClassDetailsPage} />
           <Route path="/fieldbook" component={FieldBook} />
           <Route path="/settings" component={Settings} />
+          <Route path="/" render={() => <Redirect to="/classify" />} exact={true} />
         </IonRouterOutlet>
       </IonSplitPane>
     </IonReactRouter>

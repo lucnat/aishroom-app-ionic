@@ -2,7 +2,6 @@
 import {
   IonContent,
   IonHeader,
-  IonIcon,
   IonItem,
   IonLabel,
   IonList,
@@ -27,7 +26,7 @@ const appPages = [
     icon: Icons.book
   },
   {
-    title: 'Einstellugnen',
+    title: 'Einstellungen',
     url: '/settings',
     icon: Icons.settings
   }

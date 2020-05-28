@@ -1,9 +1,9 @@
 
-@import url('https://fonts.googleapis.com/css?family=Suez+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Suez+One&display=swap'); */
 
-* {
+/* * {
 	font-family: 'Suez One', serif;
-}
+} */
 
 ion-toolbar {
 	height: 70px;
@@ -17,3 +17,4 @@ ion-title {
 p {
 	font-family: 'Helvetica', sans-serif;
 }
+

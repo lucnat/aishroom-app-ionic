@@ -8,8 +8,8 @@ import Classifier from './Classifier'
 
 const { Camera } = Plugins;
 
-const dummy = false;   // we are testing
-
+const dummyImage = true;   // we are testing
+const dummyClassify = false;
 
 export default class ClassifyPage extends React.Component{
 
@@ -45,7 +45,6 @@ export default class ClassifyPage extends React.Component{
       resultType: CameraResultType.Uri
     });
     var imageUrl = image.webPath;
-    console.log(image);
     this.setState({
       imageURL: imageUrl,
       isClassifying: false,
@@ -56,7 +55,7 @@ export default class ClassifyPage extends React.Component{
   renderImage() {
     return (
       <div style={{textAlign: 'center'}}>
-        {this.state.imageURL ? <img width="250" crossOrigin={Ion.isPlatform('desktop') ? 'anonymous' : null} id="image" src={this.state.imageURL}/> : null}
+        {this.state.imageURL ? <img width="250" crossOrigin={window.Ionic.platforms.includes('capacitor') ? null : 'anonymous'} id="image" src={this.state.imageURL}/> : null}
       </div>
     );
   }
@@ -64,10 +63,10 @@ export default class ClassifyPage extends React.Component{
   renderClassifyButton() {
     if(this.state.imageURL && !this.state.imageClassified) return (
       <div style={{textAlign: 'center'}}>
-        <Ion.IonButton fill="solid" expand="block" color="primary" onClick={() => {
+        <Ion.IonButton fill="solid" expand="block" onClick={() => {
             this.setState({isClassifying: true});
             setTimeout(() => {
-              this.classifier.current.classifyImage(this.state.imageURL, dummy);
+              this.classifier.current.classifyImage(this.state.imageURL, dummyClassify);
             }, 1000)
           }}>
             Klassifizieren
@@ -93,7 +92,7 @@ export default class ClassifyPage extends React.Component{
   }
 
   renderDummyLoad() {
-    if(dummy) return (
+    if(dummyImage) return (
       <div>
         <br />
         <a href="#" onClick={(e) => {
@@ -125,7 +124,7 @@ export default class ClassifyPage extends React.Component{
           <div style={{padding: 15}}>
             <Classifier ref={this.classifier} onFinished={this.onFinishedClassifying.bind(this)} />
             <div style={{textAlign: 'center'}}>
-              <Ion.IonButton fill="solid" expand="block" color="primary" onClick={() => {this.takePicture()}}>
+              <Ion.IonButton fill="solid" expand="block" onClick={() => {this.takePicture()}}>
                 Bild wählen
               </Ion.IonButton>
               {this.renderDummyLoad()}

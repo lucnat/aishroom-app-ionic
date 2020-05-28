@@ -7,7 +7,14 @@
 			"description": "9 Klassen, mit einem Committee. Momentan unser bestes Pilz-Modell.",
 			"inputSize": 224,
 			"labels": [ "Amanita Muscaria","Cantharellus Cibariusa,Infundibuliformis","Coprinus Comatus","Craterellus Cornucopioides","Good_Boletes","Macrolepiota Procera","Morchella Esculenta","Pleurotus Eryngii","Red_Boletes"]
-
+		},
+		{
+			"name": "12 classes model",
+			"url": "/assets/models/12_classes_model/model.json",
+			"description": "12 Klassen Modell.",
+			"inputSize": 224,
+			"labels": ["Austernpilz Shiitake","Fliegenpilz","Giftige Pilze","Gute Boleten","Gute Champignons","Gute Staeublinge","Gute Taeublinge","Nelkenschwindling Maipilz","Pfifferlinge","Schopf-Tintling","Speise-Morchel","Toten-Trompete"],
+			"from0To1": true  
 		},
 		{
 			"name": "1000 classes",

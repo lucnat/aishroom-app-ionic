@@ -22,7 +22,7 @@ export default class FieldBook extends React.Component {
         <Ion.IonHeader> {this.renderToolbar()} </Ion.IonHeader>
         <Ion.IonContent>
           <div style={{padding: 15}}>
-            <p>lorem ipsum sit dolor amet..</p>
+            <p>Work in progress..</p>
           </div>
         </Ion.IonContent>
       </Ion.IonPage>
