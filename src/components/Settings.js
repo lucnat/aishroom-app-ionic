@@ -33,7 +33,7 @@ export default class Settings extends React.Component {
   renderModels() {
     return this.state.models.map(m => (
       <Ion.IonCard key={m.name}>
-        <Ion.IonCardHeader><h2>{m.name}</h2></Ion.IonCardHeader>
+        <Ion.IonCardHeader><h2>{'#'+m.number + " " +m.name}</h2></Ion.IonCardHeader>
         <Ion.IonCardContent>
           <p>{m.description}</p>
           <Ion.IonButton 

@@ -2,14 +2,17 @@
 {
 	"models": [
 		{
-			"name": "committee",
-			"url": "/assets/models/committee/model.json",
-			"description": "9 Klassen, mit einem Committee. Momentan unser bestes Pilz-Modell.",
+			"name": "light model",
+			"number": 10,
+			"url": "/assets/models/no10/model.json",
+			"description": "Ohne vortrainiertes Google-Modell, also erstmals gänzlich aus dem Hause Giacomuzzi.",
 			"inputSize": 224,
-			"labels": [ "Amanita Muscaria","Cantharellus Cibariusa,Infundibuliformis","Coprinus Comatus","Craterellus Cornucopioides","Good_Boletes","Macrolepiota Procera","Morchella Esculenta","Pleurotus Eryngii","Red_Boletes"]
+			"probabilitiesIndex": 2,
+			"labels": ["Austern/Shiitake","Fliegenpilz","Giftig","Gute Boleten","Champignon","Gute Stäublinge","Gute Täublinge","Maipliz/Nelkenschw.","Pfifferling","Schopftintling","Morcheln","Toten-Trompete","Not a shroom"]
 		},
 		{
-			"name": "12 classes model",
+			"name": "twelve classes model",
+			"number": 9,
 			"url": "/assets/models/12_classes_model/model.json",
 			"description": "12 Klassen Modell.",
 			"inputSize": 224,
@@ -17,7 +20,16 @@
 			"from0To1": true  
 		},
 		{
-			"name": "1000 classes",
+			"name": "committee",
+			"number": 8,
+			"url": "/assets/models/committee/model.json",
+			"description": "9 Klassen, mit einem Committee.",
+			"inputSize": 224,
+			"labels": [ "Amanita Muscaria","Cantharellus Cibariusa,Infundibuliformis","Coprinus Comatus","Craterellus Cornucopioides","Good_Boletes","Macrolepiota Procera","Morchella Esculenta","Pleurotus Eryngii","Red_Boletes"]
+		},
+		{
+			"name": "A thousand classes",
+			"number": 7,
 			"url": "/assets/models/1000_classes/model.json",
 			"description": "Ein Testmodell mit 1000 Klassen, welches alles mögliche detektieren kann.",
 			"inputSize": 160,

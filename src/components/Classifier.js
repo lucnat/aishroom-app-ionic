@@ -68,9 +68,9 @@ class Classifier extends React.Component {
     try {
       console.log('classify begin');
       const imageElement = document.getElementById('image');
-      console.log(imageElement);
+      // console.log(imageElement);
       const imageTensor = tf.browser.fromPixels(imageElement);
-      console.log(imageTensor);
+      // console.log(imageTensor);
       const inputSize = Storage.get('currentModel').inputSize;
       const image = tf.image
         .resizeNearestNeighbor(imageTensor, [inputSize, inputSize])
@@ -88,12 +88,20 @@ class Classifier extends React.Component {
         mapped = tf.mul(mapped, tf.scalar(1/2.0));
         console.log('from zero to one');
       }
-      mapped.print();
+      // mapped.print();
       console.log('classify image middle')
 
       const predictions = await this.model.predict(fromMinusOneToOne);
+      console.log('predictions');
+      console.log(predictions);
       let values
-      if(Array.isArray(predictions)){
+
+      // check if we have defined index of probabilities in the list of prediction tensors
+      if(Storage.get('currentModel').probabilitiesIndex){
+        values = predictions[Storage.get('currentModel').probabilitiesIndex].dataSync();
+      }
+      else if(Array.isArray(predictions)){
+        // by default the last one
         values = predictions[predictions.length-1].dataSync();
       } else {
         values = predictions.dataSync();
