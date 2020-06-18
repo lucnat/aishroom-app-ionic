@@ -8,7 +8,7 @@ import Classifier from './Classifier'
 
 const { Camera } = Plugins;
 
-const dummyImage = true;   // turn this on for testing in browser
+const dummyImage = false;   // turn this on for testing in browser
 const dummyClassify = false;
 
 export default class ClassifyPage extends React.Component{
