@@ -33,6 +33,10 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import './theme/style.css';
 
+import { setupConfig } from '@ionic/react';
+const mode = (window.location.search.split('mode=')[1]||'').split('&')[0];
+if(mode) setupConfig({mode});
+
 const App = () => (
   <IonApp>
     <IonReactRouter>

@@ -20,11 +20,11 @@ const appPages = [
     url: '/classify',
     icon: Icons.home
   },
-  {
-    title: 'Feldbuch',
-    url: '/fieldbook',
-    icon: Icons.book
-  },
+  // {
+  //   title: 'Feldbuch',
+  //   url: '/fieldbook',
+  //   icon: Icons.book
+  // },
   {
     title: 'Einstellungen',
     url: '/settings',
@@ -36,7 +36,7 @@ const appPages = [
 class Menu extends React.Component {
   render() {
     return (
-      <IonMenu contentId="main" type="reveal">
+      <IonMenu contentId="main" type="reveal" swipeGesture={false}>
         <IonHeader>
           <IonToolbar>
             <IonTitle>Menu</IonTitle>
